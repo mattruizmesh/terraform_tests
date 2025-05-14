@@ -27,4 +27,18 @@ provider "azurerm" {
 
 locals {
   # Local variables
+  storage_account_name = ""
+  location            = "eastus"
+  resource_group_name = "rg-terraformtests-dv"
+  env                 = "dev"
+}
+
+module "storage" {
+  source = "./modules/storage"
+
+  resource_group_name      = local.resource_group_name
+  location                 = local.location
+  env                      = local.env
+  storage_account_name     = local.storage_account_name
+  
 }
